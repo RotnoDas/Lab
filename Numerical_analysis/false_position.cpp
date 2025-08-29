@@ -2,7 +2,7 @@
 #define f(x) x * x * x - 2 * x - 5
 using namespace std;
 int main() {
-    double a, b, neg, pos, m, temp;
+    double a, b, neg, pos, m;
     bool flag = false;
     while(true) {
         cout << "Enter the value of a and b: ";
@@ -25,16 +25,20 @@ int main() {
     double tolerance, error;
     cout << "Enter Tolerance: ";
     cin >> tolerance;
+    double f1 = f(neg);
+    double f2 = f(pos);
     do {
-        m = (neg + pos) / 2;
+        m = (neg * f2 - pos * f1) / (f2 - f1);
         double function_value = f(m);
         if(function_value < 0) {
             neg = m;
+            f1 = function_value;
         }
         else if(function_value > 0) {
             pos = m;
+            f2 = function_value;
         }
-        error = fabs(abs(pos) - abs(neg));
+        error = fabs(abs(function_value) - 0);
     } while(error > tolerance);
     cout << "Root is: " << m << endl;
     return 0;
