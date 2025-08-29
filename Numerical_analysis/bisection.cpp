@@ -2,40 +2,39 @@
 #define f(x) x * x * x - 2 * x - 5
 using namespace std;
 int main() {
-    double a, b, neg, pos;
+    double a, b, neg, pos, m, temp;
     bool flag = false;
     while(true) {
         cout << "Enter the value of a and b: ";
         cin >> a >> b;
         if(f(a) < 0 && f(b) > 0) {
-            neg = f(a);
-            pos = f(b);
+            neg = a;
+            pos = b;
             flag = true;
         }
-        else {
-            neg = f(b);
-            pos = f(a);
+        else if(f(a) > 0 && f(b) < 0) {
+            neg = b;
+            pos = a;
             flag = true;
         }
         if(flag == true) {
             break;
         }
     }
-    /*cout << "Enter error range: ";
-    double t, m, error;
-    cin >> t;
+    double tolerance, error;
+    cout << "Enter Tolerance: ";
+    cin >> tolerance;
     do {
-        m = (a + b) / 2;
-        double f3 = f(m);
-        if (f1 * f3 < 0) {
-            b = m;
+        m = (neg + pos) / 2;
+        double function_value = f(m);
+        if(function_value < 0) {
+            neg = m;
         }
-        else {
-            a = m;
+        else if(function_value > 0) {
+            pos = m;
         }
-        error = fabs(b - a);
-    }
-    while(error < t);
+        error = fabs(abs(pos) - abs(neg));
+    } while(error > tolerance);
     cout << "Root is: " << m << endl;
-    return 0;*/
+    return 0;
 }
