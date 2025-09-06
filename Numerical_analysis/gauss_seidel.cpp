@@ -9,7 +9,7 @@
 #define f3(x, y, z) ((1 + y) / 2)
 using namespace std;
 int main() {
-    double x, y, z, x0 = 0, y0 = 0, z0 = 0, e, e1, e2, e3;
+    double x, y, z, x0 = 0, y0 = 0, z0 = 0, e, e1, e2, e3, error;
     cout << "Enter error range: ";
     cin >> e;
     do {
@@ -19,11 +19,12 @@ int main() {
         e1 = abs(x0 - x);
         e2 = abs(y0 - y);
         e3 = abs(z0 - z);
+        error = max({e1, e2, e3});
         x0 = x;
         y0 = y;
         z0 = z;
     }
-    while(e1 > e && e2 > e && e3 > e);
+    while(error > e);
     cout << "X = " << x << endl;
     cout << "Y = " << y << endl;
     cout << "Z = " << z << endl;
