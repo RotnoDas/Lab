@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#define f(x) x *x *x - 2 * x - 5
+#define f(x) x * x * x - 2 * x - 5
 #define df(x) 3 * x * x - 2
 using namespace std;
 int main() {
